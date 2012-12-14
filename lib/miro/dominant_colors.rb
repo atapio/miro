@@ -57,7 +57,7 @@ module Miro
         original_extension = URI.parse(@src_image_path).path.split('.').last
         # FIXME this is a huge hack!
         unless original_extension == "jpg" || original_extension == "png"
-          original_extension = "jpg"
+          original_extension = "png"
         end
 
         tempfile = Tempfile.open(["source", ".#{original_extension}"])
