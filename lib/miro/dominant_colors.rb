@@ -55,6 +55,10 @@ module Miro
     def open_source_image
       if remote_source_image?
         original_extension = URI.parse(@src_image_path).path.split('.').last
+        # FIXME this is a huge hack!
+        unless original_extension == "jpg" || original_extension == "png"
+          original_extension = "jpg"
+        end
 
         tempfile = Tempfile.open(["source", ".#{original_extension}"])
         remote_file_data = open(@src_image_path).read
